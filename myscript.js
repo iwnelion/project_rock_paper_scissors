@@ -2,43 +2,40 @@ let humanScore=0;
 let computerScore=0;
 
 function getComputerChoice(){
-    let choices="rock paper scissors";
+    let choices=["rock", "paper", "scissors"];
     let index=Math.floor(Math.random()*3);
     return choices[index];
 }
 
-function playRound(humanChoice, computerChoice){
-    humanChoice=prompt("what's your option?").toLocaleLowerCase();
-    computerChoice=getComputerChoice();
+function playRound(){
+    let humanChoice=prompt("what's your option?").toLowerCase();
+    let computerChoice=getComputerChoice();
     console.log(`you: ${humanChoice}`);
     console.log(`computer: ${computerChoice}`);
 
     if(humanChoice===computerChoice){
         console.log("tie");
     }
-    else if(humanChoice==="rock" && computerChoice==="scissors") || 
+    else if((humanChoice==="rock" && computerChoice==="scissors") || 
     (humanChoice==="paper" && computerChoice==="rock") || 
-    (humanChoice==="scissors" && computerChoice==="paper"){
+    (humanChoice==="scissors" && computerChoice==="paper")){
         console.log("you win");
         humanScore++;
-    }
-    else{
+    }else{
         console.log("computer wins");
         computerScore++;
     }
-}
-
-function displayScore(){
     console.log("score:");
         console.log("you: "+humanScore);
         console.log("computer: "+computerScore);
+
 }
 
-// console.log(getHumanChoice());
-// console.log(getComputerChoice());
+function playGame(){
+    for(let i=0; i<5; i++){
+        playRound();
+        console.log("=================");
+    }
+}
 
-// const humanSelection=getHumanChoice();
-// const computerSelection=getComputerChoice();
-
-playRound();
-displayScore();
+playGame();
